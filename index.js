@@ -1,4 +1,4 @@
-let images = [
+const images = [
   {
     url: '/images/image1.jpg',
     location: 'Rostov-on-Don LCD admiral',
@@ -23,11 +23,11 @@ let images = [
 ];
 
 function initSlider() {
-  let sliderImages = document.querySelector('.slider__images');
-  let sliderArrows = document.querySelector('.slider__arrows');
-  let sliderDots = document.querySelector('.slider__dots');
-  let sliderRollPlaces = document.querySelector('.slider__roller-places ul');
-  let sliderInfoDetails = document.querySelector('.slider__info-details');
+  const sliderImages = document.querySelector('.slider__images');
+  const sliderArrows = document.querySelector('.slider__arrows');
+  const sliderDots = document.querySelector('.slider__dots');
+  const sliderRollPlaces = document.querySelector('.slider__roller-places ul');
+  const sliderInfoDetails = document.querySelector('.slider__info-details');
 
   initImages();
   initArrows();
@@ -37,7 +37,7 @@ function initSlider() {
 
   function initImages() {
     images.forEach((image, index) => {
-      let imageDiv = `<div class="image n${index} ${
+      const imageDiv = `<div class="image n${index} ${
         index === 0 ? 'active' : ''
       }" style="background-image:url(${
         images[index].url
@@ -49,7 +49,7 @@ function initSlider() {
   function initArrows() {
     sliderArrows.querySelectorAll('.slider__arrow').forEach((arrow) => {
       arrow.addEventListener('click', function () {
-        let curNumber = +sliderImages.querySelector('.active').dataset.index;
+        const curNumber = +sliderImages.querySelector('.active').dataset.index;
         let nextNumber;
         if (arrow.classList.contains('left')) {
           nextNumber = curNumber === 0 ? images.length - 1 : curNumber - 1;
@@ -63,7 +63,7 @@ function initSlider() {
 
   function initDots() {
     images.forEach((image, index) => {
-      let dot = `<div class="slider__dots-item n${index} ${
+      const dot = `<div class="slider__dots-item n${index} ${
         index === 0 ? 'active' : ''
       }" data-index="${index}"></div>`;
       sliderDots.innerHTML += dot;
@@ -77,7 +77,7 @@ function initSlider() {
 
   function initTitles() {
     images.forEach((image, index) => {
-      let title = `<li
+      const title = `<li
 				class="n${index} ${index === 0 ? 'active' : ''} roller-decor;"
 				data-index='${index}'
 			>
@@ -95,17 +95,17 @@ function initSlider() {
   }
 
   function initDescriptions(current = 0) {
-    let city = `<p>${images[current].location.split(' ')[0]} <br>
+    const city = `<p>${images[current].location.split(' ')[0]} <br>
       ${images[current].location.split(' ').slice(1).join(' ')}</p>`;
     sliderInfoDetails.querySelector('.city span').innerHTML = city;
 
-    let aArea = `<p>${images[current].area}</p>`;
+    const aArea = `<p>${images[current].area}</p>`;
     sliderInfoDetails.querySelector('.appartment-area span').innerHTML = aArea;
 
-    let rTime = `<p>${images[current].repairTime}</p>`;
+    const rTime = `<p>${images[current].repairTime}</p>`;
     sliderInfoDetails.querySelector('.repair-time span').innerHTML = rTime;
 
-    let rCost = `<p>${images[current].repairCost}</p>`;
+    const rCost = `<p>${images[current].repairCost}</p>`;
     sliderInfoDetails.querySelector('.repair-cost span').innerHTML = rCost;
   }
 
